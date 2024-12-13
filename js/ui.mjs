@@ -1,9 +1,17 @@
+function clearContent() {
+  const content = document.getElementById("content");
+  content.innerHtml = "";
+}
 function renderCharacters(characters) {
   clearContent();
+  const content = document.getElementById("content"); //12/12//
+
   if (characters.length === 0) {
-    document.getElementById("content").innerHTML = "<p>No results found</p>";
+    //document.getElementById
+    content.innerHTML = "<p>No results found</p>";
     return;
   }
+
   characters.forEach((character) => {
     const thumbnail = character.thumbnail
       ? `${character.thumbnail.path}.${character.thumbnail.extension}`
@@ -19,7 +27,8 @@ function renderCharacters(characters) {
         </div>
       </div>
     `;
-    document.getElementById("content").appendChild(card);
+    //document.getElementById
+    content.appendChild(card);
   });
 }
 

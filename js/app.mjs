@@ -1,9 +1,10 @@
-import { fetchMarvelData } from "./api.js";
-import { renderCharacters } from "./ui.js";
+import { fetchMarvelData } from "./api.mjs";
+import { renderCharacters, clearContent } from "./ui.mjs";
 
 // Function to handle character search
 async function searchCharacters(query) {
   console.log(`Searching for: ${query}`); // Debugging
+  clearContent();
   const characters = await fetchMarvelData(
     "characters",
     `&nameStartsWith=${query}`

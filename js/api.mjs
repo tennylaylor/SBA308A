@@ -1,4 +1,6 @@
-import md5 from "js-md5"; // Install md5 with `npm install md5`
+import * as md5 from "https://cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js";
+
+// Install md5 with `npm install md5`
 
 const API_BASE_URL = "http://gateway.marvel.com/v1/public";
 const PUBLIC_KEY = "e7852d7a7f2a6424596a8f481e320e19";
@@ -6,7 +8,8 @@ const PUBLIC_KEY = "e7852d7a7f2a6424596a8f481e320e19";
 // Function to construct API URL with hash
 const getApiUrl = (endpoint, params = "") => {
   const ts = new Date().getTime(); // Generate timestamp
-  const hash = md5(`${ts}${PUBLIC_KEY}`); // Generate hash using only the public key
+  const hash = md5.default(`${ts}${PUBLIC_KEY}`);
+  // Generate hash using only the public key
   const url = `${API_BASE_URL}/${endpoint}?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}${params}`;
   return url;
 };
